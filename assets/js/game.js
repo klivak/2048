@@ -4,7 +4,8 @@ window.onload = function() {
     let gameConfig = {
         width: 480,
         height: 640,
-        backgroundColor: 0xff0000
+        backgroundColor: 0xff0000,
+        scene: [bootGame, playGame]
     };
 
     game = new Phaser.Game(gameConfig);
@@ -14,6 +15,27 @@ window.onload = function() {
     window.addEventListener('resize', resizeGame);
 }
 
+class bootGame extends Phaser.Scene{
+    constructor(){
+        super("BootGame");
+    }
+    create(){
+        console.log("game is booting...");
+        this.scene.start("PlayGame");
+    }
+   }
+
+   class playGame extends Phaser.Scene{
+    constructor(){
+    super("PlayGame");
+    }
+    create(){
+    console.log("this is my awesome game");
+    }
+   }
+   
+
+   // events
 function resizeGame() {
     var canvas = document.querySelector("canvas");
     var windowWidth = window.innerWidth;
